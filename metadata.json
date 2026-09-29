@@ -1,0 +1,6 @@
+{
+  "name": "MediBridge AI",
+  "description": "Intelligent healthcare web platform connecting patients, doctors, and medical stores with unified appointments, digital prescriptions, inventory tracking, and AI assistance.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
