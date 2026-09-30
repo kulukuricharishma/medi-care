@@ -102,8 +102,6 @@ interface AppContextType {
   updateStoreDetails: (updates: Partial<MedicalStore>) => void;
 
   // UI state
-  isAIAssistantOpen: boolean;
-  setIsAIAssistantOpen: (open: boolean) => void;
   activeToast: { message: string; type: 'success' | 'error' | 'info' } | null;
   showToast: (message: string, type?: 'success' | 'error' | 'info') => void;
   resetDemoData: () => void;
@@ -210,7 +208,6 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     }
   });
 
-  const [isAIAssistantOpen, setIsAIAssistantOpen] = useState(false);
   const [activeToast, setActiveToast] = useState<{ message: string; type: 'success' | 'error' | 'info' } | null>(null);
 
   const showToast = (message: string, type: 'success' | 'error' | 'info' = 'success') => {
@@ -629,8 +626,6 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         updateStock,
         updateOrderStatus,
         updateStoreDetails,
-        isAIAssistantOpen,
-        setIsAIAssistantOpen,
         activeToast,
         showToast,
         resetDemoData,

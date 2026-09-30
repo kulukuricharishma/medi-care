@@ -17,6 +17,13 @@ export default defineConfig(() => {
       hmr: process.env.DISABLE_HMR !== 'true',
       // Disable file watching when DISABLE_HMR is true to save CPU during agent edits.
       watch: process.env.DISABLE_HMR === 'true' ? null : {},
+      proxy: {
+        '/api/n8n-chat': {
+          target: 'https://charishma1.app.n8n.cloud',
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/api\/n8n-chat/, '/webhook/c2dd44d4-187c-4066-9afe-ffd20f1e1cda/chat'),
+        },
+      },
     },
   };
 });

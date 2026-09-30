@@ -322,9 +322,14 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onOpenAuth, onNavigate
               <div className="w-10 h-10 rounded-xl bg-cyan-100 text-cyan-600 flex items-center justify-center mb-4">
                 <Sparkles className="w-5 h-5" />
               </div>
-              <h4 className="font-bold text-slate-900 text-base mb-1.5">MediBridge AI Assistant</h4>
+              <h4 className="font-bold text-slate-900 text-base mb-1.5 flex items-center gap-1.5">
+                <span>MediBridge AI Assistant</span>
+                <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-cyan-100 text-cyan-800 border border-cyan-200">
+                  n8n Connected
+                </span>
+              </h4>
               <p className="text-xs text-slate-600 leading-relaxed">
-                Natural-language triage and navigation assistant that adapts to role permissions while observing strict ethical health boundaries.
+                Natural-language triage and navigation powered by an active n8n agent workflow (charishma1.app.n8n.cloud), adapting dynamically to user roles.
               </p>
             </div>
 

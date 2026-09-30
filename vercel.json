@@ -1,5 +1,12 @@
 {
   "rewrites": [
-    { "source": "/(.*)", "destination": "/" }
+    {
+      "source": "/api/n8n-chat",
+      "destination": "https://charishma1.app.n8n.cloud/webhook/c2dd44d4-187c-4066-9afe-ffd20f1e1cda/chat"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/"
+    }
   ]
 }

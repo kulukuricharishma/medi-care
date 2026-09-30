@@ -8,7 +8,6 @@ import {
   AlertTriangle,
   Store,
   User,
-  Sparkles,
   LogOut,
   Menu,
   X,
@@ -29,7 +28,7 @@ export const StoreDashboard: React.FC<StoreDashboardProps> = ({
   onNavigateHome,
   activeSubTab = 'dashboard',
 }) => {
-  const { currentStoreProfile, logout, setIsAIAssistantOpen, medicines, orders } = useApp();
+  const { currentStoreProfile, logout, medicines, orders } = useApp();
   const [activeTab, setActiveTab] = useState(activeSubTab);
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
 
@@ -46,15 +45,9 @@ export const StoreDashboard: React.FC<StoreDashboardProps> = ({
     { id: 'low-stock', label: 'Low Stock', icon: AlertTriangle, badge: lowStockCount, badgeColor: 'bg-amber-100 text-amber-800' },
     { id: 'store-details', label: 'Store Details', icon: Store },
     { id: 'profile', label: 'Profile', icon: User },
-    { id: 'ai-assistant', label: 'AI Assistant', icon: Sparkles, isAction: true },
   ];
 
-  const handleNavClick = (id: string, isAction?: boolean) => {
-    if (isAction && id === 'ai-assistant') {
-      setIsAIAssistantOpen(true);
-      setMobileSidebarOpen(false);
-      return;
-    }
+  const handleNavClick = (id: string) => {
     setActiveTab(id);
     setMobileSidebarOpen(false);
   };
@@ -82,14 +75,14 @@ export const StoreDashboard: React.FC<StoreDashboardProps> = ({
             return (
               <button
                 key={item.id}
-                onClick={() => handleNavClick(item.id, item.isAction)}
+                onClick={() => handleNavClick(item.id)}
                 className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition-all ${
                   isActive
                     ? 'bg-amber-600 text-white shadow-xs'
                     : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
                 }`}
               >
-                <Icon className={`w-4 h-4 ${isActive ? 'text-white' : item.id === 'ai-assistant' ? 'text-amber-500' : 'text-slate-400'}`} />
+                <Icon className={`w-4 h-4 ${isActive ? 'text-white' : 'text-slate-400'}`} />
                 <span className="flex-1 text-left">{item.label}</span>
 
                 {item.badge !== undefined && item.badge > 0 && (
@@ -99,12 +92,6 @@ export const StoreDashboard: React.FC<StoreDashboardProps> = ({
                     }`}
                   >
                     {item.badge}
-                  </span>
-                )}
-
-                {item.id === 'ai-assistant' && (
-                  <span className="px-1.5 py-0.5 rounded bg-amber-100 text-amber-800 text-[9px] font-bold">
-                    AI
                   </span>
                 )}
               </button>
@@ -147,7 +134,7 @@ export const StoreDashboard: React.FC<StoreDashboardProps> = ({
                 return (
                   <button
                     key={item.id}
-                    onClick={() => handleNavClick(item.id, item.isAction)}
+                    onClick={() => handleNavClick(item.id)}
                     className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition-all ${
                       isActive ? 'bg-amber-600 text-white' : 'text-slate-600 hover:bg-slate-100'
                     }`}

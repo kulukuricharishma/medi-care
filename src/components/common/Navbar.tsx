@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import {
   Activity,
-  Sparkles,
   Menu,
   X,
   User as UserIcon,
@@ -23,7 +22,6 @@ export const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate, onOpenA
     currentRole,
     isLoggedIn,
     logout,
-    setIsAIAssistantOpen,
     loginAsRole,
   } = useApp();
 
@@ -134,15 +132,6 @@ export const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate, onOpenA
                   ← Public Site
                 </button>
 
-                {/* AI Assistant quick launch */}
-                <button
-                  onClick={() => setIsAIAssistantOpen(true)}
-                  className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-gradient-to-r from-cyan-500/10 to-teal-500/10 text-cyan-800 border border-cyan-200 hover:border-cyan-300 text-xs font-semibold shadow-sm transition-all"
-                >
-                  <Sparkles className="w-3.5 h-3.5 text-cyan-600" />
-                  <span>AI Assistant</span>
-                </button>
-
                 {/* User dropdown */}
                 <div className="relative">
                   <button
@@ -236,13 +225,6 @@ export const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate, onOpenA
 
           {/* Mobile hamburger button */}
           <div className="flex md:hidden items-center gap-2">
-            <button
-              onClick={() => setIsAIAssistantOpen(true)}
-              className="p-2 rounded-lg bg-cyan-50 text-cyan-700"
-              title="AI Assistant"
-            >
-              <Sparkles className="w-4 h-4" />
-            </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="p-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100"

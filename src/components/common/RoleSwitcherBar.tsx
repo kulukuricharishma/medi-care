@@ -1,9 +1,9 @@
 import React from 'react';
 import { useApp } from '../../context/AppContext';
-import { UserCheck, Stethoscope, Store, RotateCcw, Sparkles } from 'lucide-react';
+import { UserCheck, Stethoscope, Store, RotateCcw } from 'lucide-react';
 
 export const RoleSwitcherBar: React.FC = () => {
-  const { currentRole, loginAsRole, resetDemoData, setIsAIAssistantOpen } = useApp();
+  const { currentRole, loginAsRole, resetDemoData } = useApp();
 
   return (
     <aside aria-label="Interactive Demo Switcher" className="bg-slate-900 text-slate-100 text-xs py-2 px-3 sm:px-6 sticky top-0 z-50 border-b border-slate-800 shadow-md">
@@ -59,15 +59,6 @@ export const RoleSwitcherBar: React.FC = () => {
           </button>
 
           <div className="h-4 w-px bg-slate-700 mx-1 hidden sm:block"></div>
-
-          <button
-            onClick={() => setIsAIAssistantOpen(true)}
-            className="hidden md:flex items-center gap-1 px-2.5 py-1 rounded-lg bg-indigo-900/60 text-indigo-200 hover:bg-indigo-800/80 border border-indigo-700/50 transition-colors"
-            title="Open MediBridge AI Assistant"
-          >
-            <Sparkles className="w-3.5 h-3.5 text-indigo-400" />
-            <span>AI Assistant</span>
-          </button>
 
           <button
             onClick={resetDemoData}

@@ -9,7 +9,6 @@ import {
   CreditCard,
   Pill,
   Store,
-  Sparkles,
   User,
   LogOut,
   Menu,
@@ -36,7 +35,7 @@ export const PatientDashboard: React.FC<PatientDashboardProps> = ({
   onNavigateHome,
   activeSubTab = 'dashboard',
 }) => {
-  const { currentPatientProfile, logout, setIsAIAssistantOpen } = useApp();
+  const { currentPatientProfile, logout } = useApp();
   const [activeTab, setActiveTab] = useState(activeSubTab);
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
   const [searchMedicineQuery, setSearchMedicineQuery] = useState('');
@@ -51,16 +50,10 @@ export const PatientDashboard: React.FC<PatientDashboardProps> = ({
     { id: 'billing', label: 'Billing', icon: CreditCard },
     { id: 'medicines', label: 'Medicines', icon: Pill },
     { id: 'stores', label: 'Medical Stores', icon: Store },
-    { id: 'ai-assistant', label: 'AI Assistant', icon: Sparkles, isAction: true },
     { id: 'profile', label: 'Profile', icon: User },
   ];
 
-  const handleNavClick = (id: string, isAction?: boolean) => {
-    if (isAction && id === 'ai-assistant') {
-      setIsAIAssistantOpen(true);
-      setMobileSidebarOpen(false);
-      return;
-    }
+  const handleNavClick = (id: string) => {
     setActiveTab(id);
     setMobileSidebarOpen(false);
   };
@@ -95,20 +88,15 @@ export const PatientDashboard: React.FC<PatientDashboardProps> = ({
             return (
               <button
                 key={item.id}
-                onClick={() => handleNavClick(item.id, item.isAction)}
+                onClick={() => handleNavClick(item.id)}
                 className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition-all ${
                   isActive
                     ? 'bg-blue-600 text-white shadow-xs'
                     : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
                 }`}
               >
-                <Icon className={`w-4 h-4 ${isActive ? 'text-white' : item.id === 'ai-assistant' ? 'text-blue-500' : 'text-slate-400'}`} />
+                <Icon className={`w-4 h-4 ${isActive ? 'text-white' : 'text-slate-400'}`} />
                 <span className="flex-1 text-left">{item.label}</span>
-                {item.id === 'ai-assistant' && (
-                  <span className="px-1.5 py-0.5 rounded bg-blue-100 text-blue-800 text-[9px] font-bold">
-                    AI
-                  </span>
-                )}
               </button>
             );
           })}
@@ -150,7 +138,7 @@ export const PatientDashboard: React.FC<PatientDashboardProps> = ({
                 return (
                   <button
                     key={item.id}
-                    onClick={() => handleNavClick(item.id, item.isAction)}
+                    onClick={() => handleNavClick(item.id)}
                     className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition-all ${
                       isActive ? 'bg-blue-600 text-white' : 'text-slate-600 hover:bg-slate-100'
                     }`}

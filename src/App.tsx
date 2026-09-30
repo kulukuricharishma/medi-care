@@ -4,7 +4,6 @@ import { UserRole } from './types';
 import { RoleSwitcherBar } from './components/common/RoleSwitcherBar';
 import { Navbar } from './components/common/Navbar';
 import { Toast } from './components/common/Toast';
-import { AIAssistantModal } from './components/common/AIAssistantModal';
 import { AuthModal } from './components/auth/AuthModal';
 import { LandingPage } from './components/landing/LandingPage';
 import { PatientDashboard } from './components/patient/PatientDashboard';
@@ -61,9 +60,6 @@ const MainApp: React.FC = () => {
           <StoreDashboard onNavigateHome={() => setCurrentView('landing')} />
         )}
       </div>
-
-      {/* Floating Global AI Assistant */}
-      <AIAssistantModal />
 
       {/* Interactive Toast Notifications */}
       <Toast />
